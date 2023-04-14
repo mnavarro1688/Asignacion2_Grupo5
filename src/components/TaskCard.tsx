@@ -15,13 +15,23 @@ export const TaskCard = ({ task }: TaskCardProps): JSX.Element => {
   const { deleteTask } = useTasks();
   const router = useRouter();
 
+  const { createSubTask, deleteSubTask, subTasks } = useTasks();
+  const subTaskTemp = subTasks.filter(stasks => stasks.idTask === task.id);
+
   const handleDeleteTask = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.stopPropagation();
-    const accept = confirm("Esta seguro de que quiere eliminar esta tarea?");
-    if (accept) {
-      deleteTask(task.id);
-      toast.success("Tarea Eliminada correctamente");
+    if(subTaskTemp.length ===0)
+    {
+      const accept = confirm("Esta seguro de que quiere eliminar esta tarea?");
+      if (accept) {
+        deleteTask(task.id);
+        toast.success("Tarea Eliminada correctamente");
+      }
     }
+    else{
+      toast.error("La tarea no puede ser eliminada por que posee sub tareas");
+    }
+    
   };
 
   return (

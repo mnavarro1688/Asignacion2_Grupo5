@@ -59,6 +59,8 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
  const onSubmit = handleSubmit((data) => {
     createSubTask(data.titleSubTask, data.descriptionSubTask, data.idtask);
     toast.success("Tarea agregada correctamente");
+    setValue ("titleSubTask",'');
+    setValue ("descriptionSubTask",'');
   });
 
   const taskFound = tasks.find((task: Task) => task.id === params.id);
@@ -81,14 +83,14 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
     <div className="flex justify-center items-center h-full">
       <form className="bg-gray-700 p-10" onSubmit={onSubmitEdit}>
         <h1 className="text-3xl mb-3">
-          {params.id ? "Editar Sub Tarea" : "Nueva Sub Tarea"}
+          {params.id ? "Editar Tarea" : "Nueva Tarea"}
         </h1>
         <input
           type="text"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
           placeholder="Ingrese el Titulo de la tarea"
           autoFocus
-          name="title"
+          //name="title"
           {...register("title", { required: true })}
         />
         {errors.title && (
@@ -101,7 +103,7 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           cols={2}
           placeholder="Ingrese la descripcion"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
-          name="description"
+          //name="description"
           {...register("description", { required: true })}
         />
         {errors.description && (
@@ -115,6 +117,7 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
         </button>
       </form>
     
+    <br></br>
 
       <form className="bg-gray-700 p-10" onSubmit={onSubmit}>
         <h1 className="text-3xl mb-3">
@@ -125,7 +128,7 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
           placeholder="Ingrese el Titulo de la tarea"
           autoFocus
-          name="titleSubTask"
+          //name="titleSubTask"
           {...register("titleSubTask", { required: true })}
         />
         {errors.title && (
@@ -138,7 +141,7 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           cols={2}
           placeholder="Ingrese la descripcion"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
-          name="descriptionSubTask"
+          //name="descriptionSubTask"
           {...register("descriptionSubTask", { required: true })}
         />
         {errors.description && (
@@ -151,9 +154,7 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           Agregar
         </button>
       </form>
-
-
-        <div className="flex justify-center">
+      <div className="flex justify-center">
             {tasks.length === 0 ? (
                 <div className="block">
                     <h2 className="text-2xl">No hay sub tareas agregadas</h2>
@@ -169,8 +170,9 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
                 }
             </div>
         )}
-        </div>
+        </div>      
     </div>
+    
     
   );
 };

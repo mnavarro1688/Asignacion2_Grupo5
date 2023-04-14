@@ -44,13 +44,12 @@ const TaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
     router.push('/');
   });
 
+  const taskFound = tasks.find((task: Task) => task.id === params.id);
+
   useEffect(() => {
-    if (params.id) {
-      const taskFound = tasks.find((task: Task) => task.id === params.id);
-      if (taskFound) {
-        setValue("title", taskFound.title);
-        setValue("description", taskFound.description);
-      }
+    if (taskFound) {
+      setValue("title", taskFound.title);
+      setValue("description", taskFound.description);
     }
   }, []);
 
@@ -65,7 +64,7 @@ const TaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
           placeholder="Ingrese el Titulo de la tarea"
           autoFocus
-          name="title"
+          //name="title"
           {...register("title", { required: true })}
         />
         {errors.title && (
@@ -78,7 +77,7 @@ const TaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           cols={2}
           placeholder="Ingrese la descripcion"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
-          name="description"
+          //name="description"
           {...register("description", { required: true })}
         />
         {errors.description && (

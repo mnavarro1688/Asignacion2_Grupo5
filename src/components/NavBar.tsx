@@ -11,7 +11,7 @@ export function Navbar() {
 
   return (
     <header className="flex items-center bg-gray-800 px-28 py-3">
-      <Link href="/">
+     <Link href="/">
         <h1 className="font-black text-3xl text-white">Asignacion 2</h1>
       </Link>
 

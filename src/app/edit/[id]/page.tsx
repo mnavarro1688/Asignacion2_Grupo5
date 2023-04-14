@@ -90,8 +90,8 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
           placeholder="Ingrese el Titulo de la tarea"
           autoFocus
-          //name="title"
           {...register("title", { required: true })}
+          name="title"
         />
         {errors.title && (
           <span className="block text-red-400 mb-2">
@@ -103,8 +103,8 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           cols={2}
           placeholder="Ingrese la descripcion"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
-          //name="description"
           {...register("description", { required: true })}
+          name="description"
         />
         {errors.description && (
           <span className="block text-red-400 mb-2">
@@ -128,8 +128,8 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-2 block"
           placeholder="Ingrese el Titulo de la tarea"
           autoFocus
-          //name="titleSubTask"
           {...register("titleSubTask", { required: true })}
+          name="titleSubTask"
         />
         {errors.title && (
           <span className="block text-red-400 mb-2">
@@ -141,8 +141,8 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           cols={2}
           placeholder="Ingrese la descripcion"
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
-          //name="descriptionSubTask"
           {...register("descriptionSubTask", { required: true })}
+          name="descriptionSubTask"
         />
         {errors.description && (
           <span className="block text-red-400 mb-2">
@@ -163,7 +163,6 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
             ) : (
             <div className="w-7/10">
                 {
-                    //subTasks.filter(stask => stask.idTask = taskFound.id);
                     subTaskTemp.map((stask, i) => (
                     <SubTaskCard SubTask={stask} key={i} />
                     ))
@@ -172,8 +171,6 @@ const SubTaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
         )}
         </div>      
     </div>
-    
-    
   );
 };
 

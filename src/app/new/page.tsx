@@ -79,6 +79,7 @@ const TaskFormPage: React.FC<TaskFormPageProps> = ({ params }) => {
           className="bg-gray-800 focus:text-gray-100 focus:outline-none w-full py-3 px-4 mb-1 block"
           //name="description"
           {...register("description", { required: true })}
+          name="description"
         />
         {errors.description && (
           <span className="block text-red-400 mb-2">
